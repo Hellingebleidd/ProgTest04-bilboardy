@@ -35,7 +35,7 @@ int main(void) {
        if(tmp!=1 || dist<0 || (koniec!=EOF && koniec!='\n' && koniec!=' '))
            return NESPRAVNY_VSTUP;
        return pocet;
-   }(while EOF);
+   }while (EOF);
 
    pocet=nacitajHodnoty();
    if(pocet!=NESPRAVNY_VSTUP){

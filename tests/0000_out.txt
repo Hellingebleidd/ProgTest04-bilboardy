@@ -1,0 +1,7 @@
+Mozna umisteni:
+Vzdalenosti:
+Billboardu: 1
+Billboardu: 1
+Billboardu: 3
+Billboardu: 3
+N/A
