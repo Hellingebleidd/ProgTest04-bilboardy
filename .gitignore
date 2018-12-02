@@ -1,7 +1,7 @@
 #testovacie skripty
 tests/*_out_zz.txt
 tests/null
-tests
+#tests
 
 
 # Prerequisites
