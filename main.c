@@ -1,44 +1,59 @@
 #include <stdio.h>
+#define NESPRAVNY_VSTUP -1
+
+int len;
+int pos[50];
+int dist;
+
+
+int nacitajHodnoty(){
+    int tmp, pocet =0, koniec;
+    char oddelovac;
+    printf("Mozna umisteni\n");
+    tmp=scanf("%d : %c", &len,&oddelovac);
+    if(tmp!=2 || oddelovac!='{')
+        return NESPRAVNY_VSTUP;
+
+    do{
+        tmp=scanf("%d %c", &(pos[pocet++]), &oddelovac);
+        if(tmp!=2 || (oddelovac!=',' && oddelovac!='}'))
+            return NESPRAVNY_VSTUP;
+    }while(oddelovac!='}');
+
+    printf("Vzdalenosti:\n");
+
+}
+
 
 int main(void) {
-    int len, dist, pozicia, i, vstup; //pozicia by asi malo byt pole
-    char koniec;
+   int pocet;
+   int i, min=0, tmpMin=0;
 
-    printf("napis\n");
+   do{
+       tmp=scanf("%d", &dist);
+       koniec=getchar();
+       if(tmp!=1 || dist<0 || (koniec!=EOF && koniec!='\n' && koniec!=' '))
+           return NESPRAVNY_VSTUP;
+       return pocet;
+   }(while EOF);
 
+   pocet=nacitajHodnoty();
+   if(pocet!=NESPRAVNY_VSTUP){
 
-    printf("Mozna umisteni\n");
-    scanf("%d: {", &len);
-    if (len <= 0) {
-        printf("Nespravny vstup");
-        return 0;
-    }
+   }
+   else {
+       printf("Nespravny vstup\n");
+   }
 
-    for (i = 1; i <= 5; i++) {          //potom pre i<=100000
-        scanf("%d, ", &pozicia);
-        //printf("pozicia: %d\n", pozicia);
-        if (pozicia < 1 || pozicia > (len - 1)) {
-            printf("Nespravny vstup");
-            return 0;
-        }
-    }
-    scanf("%c",&koniec);
-    if (koniec != '}'){
-        printf("Nespravny vstup");
-        return 0;
-    }
+   for(i=0; i<pocet; i++){
+     if(pos[i]<=dist)
+         i++;
+     else{
+        dist=dist + pos[i-1];
+        min++;
+     }
+   }
 
-
-    printf("Vzdialenosti:\n");
-    scanf("%d", &dist);
-    if (dist <= 0) {
-        printf("Neplatny vstup");
-        return 0;
-    }
-
-    //printf("vzdialenost: %d\n", dist);
-
-    //TU MA TERAZ IST TEN VYPOCET
-
+    printf("Billboardu: %d\n", min);
     return 0;
 }
